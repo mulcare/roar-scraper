@@ -32,6 +32,29 @@ def scrape_scenario(scenario_id)
 
   #output (will be JSON eventually)
   puts "#{scenario_name} (#{scenario_id}) [from #{scenario_source} (Issue #{scenario_source_issue}): #{side_a_wins} #{side_a_name} wins / #{side_b_wins} #{side_b_name} wins"
-end
 
+  scenario_info = {
+    "name" => scenario_name,
+    "id" => scenario_id,
+    "publication" => {
+      "source" => scenario_source,
+      "source_issue" => scenario_source_issue
+    },
+    "sides" => {
+      "side a" => side_a_name,
+      "side b" => side_b_name
+    },
+    "record" => {
+      "side a wins" => side_a_wins,
+      "side b wins" => side_b_wins
+    }
+  }
+
+  puts JSON.pretty_generate(scenario_info)
+end
 scrape_scenario(125)
+#i = 1
+#until i > 5 
+#  scrape_scenario(i)
+#  i += 1
+#end
