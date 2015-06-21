@@ -41,4 +41,9 @@ def scrape_scenario(scenario_id)
   puts JSON.pretty_generate(scenario_info)
 end
 
-scrape_scenario(125)
+i=1
+while i < 5
+  scrape_scenario(i)
+  sleep 5 # Please use sane delay to avoid hammering server.
+  i+=1
+end
